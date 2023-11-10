@@ -14,6 +14,7 @@ const db = require('./config/db');
 // Connect to DB
 db.connect();
 
+app.use(morgan('combined'))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({
