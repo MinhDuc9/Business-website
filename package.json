@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/MinhDuc9/nodejs_blog#readme",
   "lint-staged": {
-    "src/**/*.{js,json,scss}": " --single-quote --trailing-comma all --tab-width 4 --write"
+    "src/**/*.{js,json,scss}": "prettier --write --single-quote --tab-width 4"
   },
   "husky": {
     "hooks": {
