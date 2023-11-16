@@ -1,69 +1,68 @@
-<form class="mt-4" name="container-form" method="POST" action="/products/recycleBin-form-action">
-    <div>
-      <a href="/user/stored/products">Return</a>
-      <h3>Deleted products</h3>
+<div>
+  <a href="/user/stored/products">Return</a>
+  <h3>Deleted products</h3>
 
-      <div class="mt-4 d-flex align-items-center">
-        <select class="form-control form-control-sm checkbox-select-all-options" name="action" required>
-          <option value="">-- Select option --</option>
-          <option value="delete">Delete</option>
-          <option value="restore">Restore</option>
-        </select>
+  <div class="mt-4 d-flex align-items-center">
+    <select class="form-control form-control-sm checkbox-select-all-options" name="action" required>
+      <option value="">-- Select option --</option>
+      <option value="delete">Delete</option>
+      <option value="restore">Restore</option>
+    </select>
 
-        <button class="btn btn-primary btn-sm check-all-submit-btn" disabled>
-          Apply
-        </button>
-      </div>
-    </div>
-    <table class="table mt-4">
-        <thead>
-            <tr>
-                <th>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
-                    <label class="form-check-label" for="checkbox-all">
-                      Select all
-                    </label>
-                  </div>
-                </th>
-                <th scope="col">#</th>
-                <th scope="col">
-                  Product name
-                </th>
-                <th scope="col">
-                  Price
-                </th>
-                <th scope="col" colspan="2">Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each products}}
-            <tr>
-                <td>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="productIds[]" value="{{this._id}}">
-                  </div>
-                </td>
-                <th scope="row">{{sum @index 1}}</th>
-                <td>{{this.name}}</td>
-                <td>{{this.price}}</td>
-                <td>{{this.description}}</td>
-                <td>
-                    <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">Restore</a>
-                    <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-product-modal">Delete permanently</a>
-                </td>
-            </tr>
-            {{else}}
-              <tr>
-                <td colspan="5" class="text-center">
-                  Recycle bin empty
-                  <a href="/user/stored/products">return to list</a>
-                </td>
-              </tr>
-            {{/each}}
-        </tbody>
-    </table>
-</form>
+    <button class="btn btn-primary btn-sm check-all-submit-btn" disabled>
+      Apply
+    </button>
+  </div>
+</div>
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
+                <label class="form-check-label" for="checkbox-all">
+                  Select all
+                </label>
+              </div>
+            </th>
+            <th scope="col">#</th>
+            <th scope="col">
+              Product name
+            </th>
+            <th scope="col">
+              Price
+            </th>
+            <th scope="col" colspan="2">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each products}}
+        <tr>
+            <td>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="productIds[]" value="{{this._id}}">
+              </div>
+            </td>
+            <th scope="row">{{sum @index 1}}</th>
+            <td>{{this.name}}</td>
+            <td>{{this.price}}</td>
+            <td>{{this.description}}</td>
+            <td>
+                <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">Restore</a>
+                <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-product-modal">Delete permanently</a>
+            </td>
+        </tr>
+        {{else}}
+          <tr>
+            <td colspan="5" class="text-center">
+              Recycle bin empty
+              <a href="/user/stored/products">return to list</a>
+            </td>
+          </tr>
+        {{/each}}
+    </tbody>
+</table>
+
 
 {{!-- Confirm delete product --}}
 
